@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
     Radio radio = new Radio();
-//    Radio radioStations = new Radio(20);
+    Radio radioStations = new Radio(20,50,12,19);
 
     @Test
     void shouldRadioStationMax() {
@@ -18,8 +18,8 @@ class RadioTest {
 
         assertEquals(expected, actual);
 
-//        radioStations.radioStationMax();
-//        assertEquals(19,radioStations.getRadioStation());
+        radioStations.radioStationMax();
+        assertEquals(11,radioStations.getRadioStation());
     }
 
     @Test
@@ -78,10 +78,6 @@ class RadioTest {
     }
 
 
-
-
-
-
     @Test
     void shouldLouder() {
         radio.setVolume(100);
@@ -114,5 +110,14 @@ class RadioTest {
         assertEquals(expected, radio.getVolume());
     }
 
+    @Test
+    void shouldQuietReturn() {
+        radio.setVolume(0);
+        radio.quiet();
+
+        int expected = 0;
+
+        assertEquals(expected, radio.getVolume());
+    }
 
 }
